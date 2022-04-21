@@ -34,7 +34,7 @@ customize:
         facebook: /
         linkedin: /
     post_count: 5
-    highlight: lightcode
+    highlight: obsidian
 
 # keept it like this to add the root path (probably a bug)
 root: ..
