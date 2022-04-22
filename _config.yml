@@ -3,17 +3,25 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
+# 网站标题
 title: Amoxicillin-Le’s blog
+# 网站副标题
 subtitle: ''
-description: ''
+# 网站描述 主要用于SEO，告诉搜索引擎一个关于您站点的简单描述，通常建议在其中包含您网站的关键词
+description: 'Amoxicillin-Le’s blog 记录日常生活、工作、技术、Java...吧啦吧啦'
+# 网站的关键词。使用半角逗号 , 分隔多个关键词
 keywords:
+# 作者名字
 author: Amoxicillin-Le
+# 网站使用的语言，需要去查看主题文件夹内支持的语言
 language: en
-timezone: ''
+# 网站时区。Hexo 默认使用您电脑的时区。请参考 时区列表 进行设置，如 America/New_York, Japan, 和 UTC 。一般的，对于中国大陆地区可以使用Asia/Shanghai。
+timezone: 'Asia/Shanghai'
 
 # URL
 ## Set your site url here. For example, if you use GitHub Page, set url as 'https://username.github.io/project'
 url: http://example.com
+# 文章的永久链接 默认格式 :year/:month/:day/:title/
 permalink: :year/:month/:day/:title/
 permalink_defaults:
 pretty_urls:
@@ -21,17 +29,27 @@ pretty_urls:
   trailing_html: true # Set to false to remove trailing '.html' from permalinks
 
 # Directory
+# 资源文件夹，这个文件夹用来存放内容。
 source_dir: source
+# 公共文件夹，这个文件夹用于存放生成的站点文件。
 public_dir: public
+# 标签文件夹
 tag_dir: tags
+# 归档文件夹
 archive_dir: archives
+# 分类文件夹
 category_dir: categories
+# Include code 文件夹，source_dir 下的子目录
 code_dir: downloads/code
+# 国际化（i18n）文件夹
 i18n_dir: :lang
+# *跳过指定文件的渲染。**匹配到的文件将会被不做改动地复制到 public 目录中。您可使用 glob 表达式来匹配路径
 skip_render:
 
 # Writing
+# 默认以标题做为文件名称
 new_post_name: :title.md # File name of new posts
+# 创建一篇新文章或者新的页面时的默认布局
 default_layout: post
 titlecase: false # Transform title into titlecase
 external_link:
@@ -39,6 +57,7 @@ external_link:
   field: site # Apply to the whole site
   exclude: ''
 filename_case: 0
+# 是否预览草稿
 render_drafts: false
 # 生成文章的时候生成一个同名的资源目录用于存放图片文件
 post_asset_folder: true
@@ -46,7 +65,7 @@ relative_link: false
 future: true
 highlight:
   enable: true
-  line_number: true
+  line_number: false
   auto_detect: false
   tab_replace: ''
   wrap: true

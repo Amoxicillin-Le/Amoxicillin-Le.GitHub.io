@@ -1,8 +1,11 @@
 ---
 title: Hello World
 date: 2022-04-20 23:48:13
-tags: test1
-categories: 测试分类1
+tags:                   # 标签
+    - test1
+categories:             # 分类
+    - 测试分类1
+toc: true               # 是否显示文章目录
 ---
 Welcome to [Hexo](https://hexo.io/)! This is your very first post. Check [documentation](https://hexo.io/docs/) for more info. If you get any problems when using Hexo, you can find the answer in [troubleshooting](https://hexo.io/docs/troubleshooting.html) or you can ask me on [GitHub](https://github.com/hexojs/hexo/issues).
 
@@ -43,12 +46,6 @@ More info: [Deployment](https://hexo.io/docs/one-command-deployment.html)
 {% blockquote David Levithan, Wide Awake %}
 不要只为自己寻求幸福。为所有人寻求幸福。通过善良。通过怜悯。
 {% endblockquote %}
-
-{% codeblock wrap:false%}
-public static void main(String[] args) {
-    System.out.println("Hello world");
-}
-{% endcodeblock %}
 
 ``` java
 public static void main(String[] args) {

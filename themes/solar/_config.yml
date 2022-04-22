@@ -1,8 +1,10 @@
 # 菜单栏
 nav:
   Home: /
-  About: /about/
+  # About: /about/
   Writing: /archives/
+  # categories: /categories/
+  # tags: /tags/
   Projects: https://github.com/Amoxicillin-Le/Amoxicillin-Le.GitHub.io
 
 projects_url: https://github.com/Amoxicillin-Le
@@ -30,10 +32,17 @@ customize:
         gravator: false
     social_links:
         github: https://github.com/Amoxicillin-Le
-        twitter: /
-        facebook: /
-        linkedin: /
-    post_count: 5
+        # twitter: /
+        # facebook: /
+        # linkedin: /
+        weibo: 123
+        wechat: zhaole440339
+        qq: 631890498
+    # 仅显示 5 个最近的帖子（默认）
+    # post_count: 5
+    # 显示所有帖子
+    show_all_posts: true
+    # 代码高亮主题
     highlight: obsidian
 
 # keept it like this to add the root path (probably a bug)
