@@ -126,3 +126,53 @@ deploy:
   repo: https://github.com/Amoxicillin-Le/Amoxicillin-Le.GitHub.io
   branch: main
   token: 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
+
+# Docs: https://github.com/hexojs/hexo-renderer-markdown-it
+markdown:
+  preset: 'commonmark'
+  render:
+    html: true                        # 定义文档中的HTML内容是否应转义或传递给最终结果
+    xhtmlOut: false                   # 定义解析器是否将导出完全兼容XHTML的标记
+    langPrefix: 'language-'
+    breaks: true                      # 使源文件中的换行符被解析为<br>标记。每次按Enter键都会创建换行符
+    linkify: true                     # 解析器能够将直接粘贴到文本中的链接内联
+    typographer: true                 # 可以替换常见的排版元素
+    quotes: '“”‘’'                    # 单引号、双引号如何被替换
+  enable_rules:
+  disable_rules:
+  plugins:
+    - markdown-it-abbr
+    - markdown-it-footnote
+    - markdown-it-ins
+    - markdown-it-sub
+    - markdown-it-sup
+    - markdown-it-deflist
+    - markdown-it-imsize
+    - markdown-it-mark
+    - markdown-it-regexp
+    - markdown-it-task-checkbox
+    - markdown-it-expandable
+    - name: markdown-it-container
+      options: success
+    - name: markdown-it-container
+      options: info
+    - name: markdown-it-container
+      options: warning
+    - name: markdown-it-container
+      options: danger
+    - name: markdown-it-container
+      options: tips
+    - markdown-it-deflist
+    - name: markdown-it-emoji
+      options:
+        shortcuts: {}
+  anchors:
+    level: 1
+    collisionSuffix: 'v'
+    permalink: false
+    permalinkClass: 'header-anchor'
+    permalinkSide: 'left'
+    permalinkSymbol: '¶'
+    case: 0
+    separator: '-'
+
