@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title>Flink（一）Flink初体验</title>
+    <url>/2022/04/24/Flink%EF%BC%88%E4%B8%80%EF%BC%89Flink%E5%88%9D%E4%BD%93%E9%AA%8C/</url>
+    <content><![CDATA[<h1>运行前检查</h1>
+<p>为了运行Flink，只需要提前按转好 <code>Java8</code> 或 <code>Java11</code>。可以通过 <code>java -version</code> 命令检查是否已经安装正确。</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">➜  ~ java -version</span><br><span class="line">java version <span class="string">&quot;1.8.0_181&quot;</span></span><br><span class="line">Java(TM) SE Runtime Environment (build 1.8.0_181-b13)</span><br><span class="line">Java HotSpot(TM) 64-Bit Server VM (build 25.181-b13, mixed mode)</span><br></pre></td></tr></table></figure>
+<h1>下载</h1>
+<p>这里使用当前最新的稳定版本 <code>v1.14.0</code>，下载Flink：<a href="https://flink.apache.org/zh/downloads.html">传送门</a><br>
+下载并解压</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">➜  ~ <span class="built_in">cd</span> flink  </span><br><span class="line">➜  flink tar -zxvf flink-1.14.0-bin-scala_2.12.tgz</span><br><span class="line">➜  flink <span class="built_in">cd</span> flink-1.14.0/</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><strong>验证文件的完整性</strong><br>
+在下载完成后，我们还需要验证下载文件的完整性（这里仅简单说明，详情请戳：<a href="https://www.apache.org/info/verification.html">传送门</a>）<br>
+由Apache Software Foundation发布的所有正式版本的代码都由发布经理签署，PGP签名和SHA/MD5校验和随发行版一起提供，签名和校验和只能从Apache软件基金会的官方网站获得。</p>
+<ul class="lvl-1">
+<li class="lvl-2">文件哈希用于检查文件是否已正确下载。他们不对文件的真实性提供任何保证。只有检查哈希值，您才能确定您的下载没有被修改或不完整或有错误。</li>
+<li class="lvl-2">一个正确的文件签名意味着文件没有被篡改。</li>
+<li class="lvl-2">由于公钥密码学的性质，我们还需要对签名公钥的真实性进行验证。</li>
+</ul>
+</blockquote>
+<h1>目录结构</h1>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">.</span><br><span class="line">|____bin                        # 二进制程序目录，启动脚本</span><br><span class="line">|____conf                       # 配置文件</span><br><span class="line">|____examples                   # 示例</span><br><span class="line">|____plugins                    # 插件</span><br><span class="line">|____lib                        # 依赖库</span><br><span class="line">|____opt</span><br><span class="line">|____log                        # 日志</span><br><span class="line">|____licenses                   # 许可</span><br><span class="line">|____NOTICE</span><br><span class="line">|____LICENSE</span><br><span class="line">|____README.txt</span><br></pre></td></tr></table></figure>
+<h1>启动集群</h1>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">➜  flink-1.14.4 ./bin/start-cluster.sh </span><br><span class="line">Starting cluster.</span><br><span class="line">Starting standalonesession daemon on host localhost.</span><br><span class="line">Starting taskexecutor daemon on host localhost.</span><br></pre></td></tr></table></figure>
+<h1>访问 Flink Web Dashboard</h1>
+<p>程序启动之后，我们可以打开Flink的Web仪表盘，默认端口为 <code>8081</code>。Web面板可以查看正在运行的Job、已经完成的Job、任务管理、后台提交Job程序等。<br>
+<img data-src="Flink-Web-Dashboard.png" alt="Flink Web Dashboard"></p>
+<h1>提交作业</h1>
+<p>Flink 的 Releases 附带了许多的示例作业。你可以任意选择一个，快速部署到已运行的集群上。</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">➜  flink-1.14.0 ./bin/flink run examples/streaming/WordCount.jar </span><br><span class="line">Executing WordCount example with default input data <span class="built_in">set</span>.</span><br><span class="line">Use --input to specify file input.</span><br><span class="line">Printing result to stdout. Use --output to specify output path.</span><br><span class="line">Job has been submitted with JobID d5998b738b9aa17c26de042d8624c964</span><br><span class="line">Program execution finished</span><br><span class="line">Job with JobID d5998b738b9aa17c26de042d8624c964 has finished.</span><br><span class="line">Job Runtime: 949 ms</span><br><span class="line"></span><br><span class="line">➜  flink-1.14.0 <span class="built_in">tail</span>  <span class="built_in">log</span>/flink-*-taskexecutor-*.out</span><br><span class="line">(nymph,1)</span><br><span class="line">(<span class="keyword">in</span>,3)</span><br><span class="line">(thy,1)</span><br><span class="line">(orisons,1)</span><br><span class="line">(be,4)</span><br><span class="line">(all,2)</span><br><span class="line">(my,1)</span><br><span class="line">(sins,1)</span><br><span class="line">(remember,1)</span><br><span class="line">(d,4)</span><br></pre></td></tr></table></figure>
+<p>另外，可以通过 Flink 的 Web Dashboard 来监视集群的状态和正在运行的作业：<br>
+<img data-src="Completed-Jobs.png" alt="Completed Jobs"></p>
+<h1>停止集群</h1>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">➜  flink-1.14.0 ./bin/stop-cluster.sh </span><br><span class="line">Stopping taskexecutor daemon (pid: 57039) on host localhost.</span><br><span class="line">Stopping standalonesession daemon (pid: 56796) on host localhost.</span><br></pre></td></tr></table></figure>]]></content>
+      <tags>
+        <tag>Flink</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Flink（三）Table API - Flink操场 - 实时支出报告程序</title>
+    <url>/2022/04/26/Flink%EF%BC%88%E4%B8%89%EF%BC%89Table-API-Flink%E6%93%8D%E5%9C%BA-%E5%AE%9E%E6%97%B6%E6%94%AF%E5%87%BA%E6%8A%A5%E5%91%8A%E7%A8%8B%E5%BA%8F/</url>
+    <content><![CDATA[<p>docker-compose 工程、服务、容器</p>
+<p>docker-compose -f docker-compose.yml config 如果你编写的docker-compose.yml文件有效果，则会打印出来，否则会提升你错误的地方。建议每个人都记住这个命令，好用！</p>
+]]></content>
+      <tags>
+        <tag>Flink</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Flink（二）DataStream API - 账户欺诈检测报警程序</title>
+    <url>/2022/04/26/Flink%EF%BC%88%E4%BA%8C%EF%BC%89DataStream-API-%E8%B4%A6%E6%88%B7%E6%AC%BA%E8%AF%88%E6%A3%80%E6%B5%8B%E6%8A%A5%E8%AD%A6%E7%A8%8B%E5%BA%8F/</url>
+    <content><![CDATA[<p>支持容错状态，这些原语几乎与常规成员变量一样易于使用</p>
+]]></content>
+      <tags>
+        <tag>Flink</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hello World</title>
+    <url>/2022/04/20/hello-world/</url>
+    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<h2 id="Quick-Start">Quick Start</h2>
+<h3 id="Create-a-new-post">Create a new post</h3>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3 id="Run-server">Run server</h3>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
+<h3 id="Generate-static-files">Generate static files</h3>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3 id="Deploy-to-remote-sites">Deploy to remote sites</h3>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+<!-- <blockquote><p>不要只为自己寻求幸福。为所有人寻求幸福。通过善良。通过怜悯。</p>
+<footer><strong>David Levithan</strong><cite>Wide Awake</cite></footer></blockquote>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">    System.out.println(<span class="string">&quot;Hello world&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote class="pullquote [class]"><p>content</p>
+</blockquote>
+<a href="#">Post not found: Blog</a> 
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+<span id="more"></span>
+<!-- Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+首行缩进
+> &ensp; //相当于1个中文，2字节 --> ]]></content>
+  </entry>
+</search>
