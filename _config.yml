@@ -1,31 +1,37 @@
 # Hexo Configuration
+# 站点配置文件
 ## Docs: https://hexo.io/docs/configuration.html
 ## Source: https://github.com/hexojs/hexo/
+
 
 # Site
 # 网站标题
 title: Amoxicillin-Le’s blog
 # 网站副标题
-subtitle: ''
+subtitle: 'Let life be beautiful like summer flowers'
 # 网站描述 主要用于SEO，告诉搜索引擎一个关于您站点的简单描述，通常建议在其中包含您网站的关键词
-description: 'Amoxicillin-Le’s blog 记录日常生活、工作、技术、Java...吧啦吧啦'
+description: '日常生活 工作 成长...吧啦吧啦...'
 # 网站的关键词。使用半角逗号 , 分隔多个关键词
 keywords:
 # 作者名字
 author: Amoxicillin-Le
 # 网站使用的语言，需要去查看主题文件夹内支持的语言
-language: en
+language: zh_CN
 # 网站时区。Hexo 默认使用您电脑的时区。请参考 时区列表 进行设置，如 America/New_York, Japan, 和 UTC 。一般的，对于中国大陆地区可以使用Asia/Shanghai。
 timezone: 'Asia/Shanghai'
 
 # URL
-## Set your site url here. For example, if you use GitHub Page, set url as 'https://username.github.io/project'
-url: http://example.com
+## 在此处设置您的网站网址。 例如，如果您使用GitHub Page，则将url设置为“ https://username.github.io/project”
+url: https://kar98.com.cn/
 # 文章的永久链接 默认格式 :year/:month/:day/:title/
 permalink: :year/:month/:day/:title/
+# 永久链接中各部分的默认值
 permalink_defaults:
+# 改写 permalink 的值来美化 URL
 pretty_urls:
+# 是否在永久链接中保留尾部的 index.html，设置为 false 时去除
   trailing_index: true # Set to false to remove trailing 'index.html' from permalinks
+# 是否在永久链接中保留尾部的 .html, 设置为 false 时去除 (对尾部的 index.html无效)
   trailing_html: true # Set to false to remove trailing '.html' from permalinks
 
 # Directory
@@ -51,26 +57,26 @@ skip_render:
 new_post_name: :title.md # File name of new posts
 # 创建一篇新文章或者新的页面时的默认布局
 default_layout: post
+# 把标题转换为 title case
 titlecase: false # Transform title into titlecase
+
 external_link:
-  enable: true # Open external links in new tab
-  field: site # Apply to the whole site
-  exclude: ''
-filename_case: 0
-# 是否预览草稿
-render_drafts: false
-# 生成文章的时候生成一个同名的资源目录用于存放图片文件
-post_asset_folder: true
-relative_link: false
-future: true
-highlight:
+  enable: true    # 在新标签中打开链接
+  field: site     # 对整个网站（site）生效或仅对文章（post）生效
+  exclude: ''     # 需要排除的域名。主域名和子域名如 www 需分别配置
+filename_case: 0  # 把文件名称转换为 (1) 小写或 (2) 大写
+render_drafts: false      # 是否预览草稿
+post_asset_folder: true   # 生成文章的时候生成一个同名的资源目录用于存放图片文件
+relative_link: false      # 把链接改为与根目录的相对位址
+future: true              # 显示未来的文章
+highlight:                # 代码块的设置, see [Highlight.js](https://hexo.io/docs/syntax-highlight#Highlight-js) section for usage guide
   enable: true
-  line_number: false
+  line_number: true
   auto_detect: false
   tab_replace: ''
   wrap: true
   hljs: false
-prismjs:
+prismjs:                  # #代码块的设置, see [PrismJS](https://hexo.io/docs/syntax-highlight#PrismJS) section for usage guides
   enable: false
   preprocess: true
   line_number: true
@@ -117,7 +123,7 @@ ignore:
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: solar
+theme: next
 
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
@@ -167,7 +173,7 @@ markdown:
       options:
         shortcuts: {}
   anchors:
-    level: 1
+    level: 2
     collisionSuffix: 'v'
     permalink: false
     permalinkClass: 'header-anchor'
@@ -175,4 +181,3 @@ markdown:
     permalinkSymbol: '¶'
     case: 0
     separator: '-'
-

@@ -3,6 +3,7 @@ title: Flink（一）Flink初体验
 date: 2022-04-24 09:41:29
 tags:
     - Flink
+description: 本地下载Flink稳定开发版并试运行
 ---
 
 # 运行前检查
@@ -23,9 +24,8 @@ Java HotSpot(TM) 64-Bit Server VM (build 25.181-b13, mixed mode)
 ➜  flink cd flink-1.14.0/
 ```
 > **验证文件的完整性**
-在下载完成后，我们还需要验证下载文件完整性，（这里仅简单说明，详情请戳：[传送门](https://www.apache.org/info/verification.html)）
-由Apache Software Foundation发布的所有正式版本的代码都由发布经理签署。PGP签名和SHA/MD5校验和随发行版一起提供。
-签名和校验和只能从Apache软件基金会的官方网站获得。
+在下载完成后，我们还需要验证下载文件的完整性（这里仅简单说明，详情请戳：[传送门](https://www.apache.org/info/verification.html)）
+由Apache Software Foundation发布的所有正式版本的代码都由发布经理签署，PGP签名和SHA/MD5校验和随发行版一起提供，签名和校验和只能从Apache软件基金会的官方网站获得。
 > - 文件哈希用于检查文件是否已正确下载。他们不对文件的真实性提供任何保证。只有检查哈希值，您才能确定您的下载没有被修改或不完整或有错误。
 > - 一个正确的文件签名意味着文件没有被篡改。
 > - 由于公钥密码学的性质，我们还需要对签名公钥的真实性进行验证。
