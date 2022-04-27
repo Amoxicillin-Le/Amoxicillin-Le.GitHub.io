@@ -41,8 +41,9 @@
   <entry>
     <title>Flink（三）Table API - Flink操场 - 实时支出报告程序</title>
     <url>/2022/04/26/Flink%EF%BC%88%E4%B8%89%EF%BC%89Table-API-Flink%E6%93%8D%E5%9C%BA-%E5%AE%9E%E6%97%B6%E6%94%AF%E5%87%BA%E6%8A%A5%E5%91%8A%E7%A8%8B%E5%BA%8F/</url>
-    <content><![CDATA[<p>docker-compose 工程、服务、容器</p>
-<p>docker-compose -f docker-compose.yml config 如果你编写的docker-compose.yml文件有效果，则会打印出来，否则会提升你错误的地方。建议每个人都记住这个命令，好用！</p>
+    <content><![CDATA[<p>docker-compose 工程、服务、容器<br>
+docker-compose -f docker-compose.yml config 如果你编写的docker-compose.yml文件有效果，则会打印出来，否则会提升你错误的地方。建议每个人都记住这个命令，好用！</p>
+<p><a href="postman://">点击打开PostMan</a></p>
 ]]></content>
       <tags>
         <tag>Flink</tag>
